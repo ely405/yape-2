@@ -1,9 +1,6 @@
 'use strict';
 
 const createResendCodeScreen = (updatePageFunction, wrapperContainer)=>{
-  console.log(state.screen);
-  console.log(state.apiData.data.phone);
-  console.log(state.apiData.data.code);
   let dataResend = state.apiData.data;
   console.log(dataResend);
   let resendWrapper = $('<section/>',{'class':'row valign-wrapper flex-column container bg-no-repeat h-95vh flex-center', 'id':'message-container'});
@@ -19,17 +16,26 @@ const createResendCodeScreen = (updatePageFunction, wrapperContainer)=>{
   retryPara.append(clockIcon, countDown);
   resendWrapper.append(resendTitle, resendPar, inpCode, retryPara, message);
 
-  checkCode(inpCode, dataResend, wrapperContainer, updatePageFunction);
-  // countDownInterval(22, resendCode(wrapperContainer, updatePageFunction, inpCode, message), dataResend, wrapperContainer, updatePageFunction);
+  counter(inpCode, dataResend, wrapperContainer, updatePageFunction);
   return resendWrapper;
 }
 
-const checkCode = (input, data, wrapperContainer, updatePageFunction)=>{
-  console.log(data.code);
-  input.keyup(()=>{
-    console.log(input.val());
+const counter = (input, data, wrapperContainer, updatePageFunction)=>{
+  checkCode(input, data, wrapperContainer, updatePageFunction, data.code);
+  let interval = setInterval(()=>{
+    data.code = null;
     console.log(data.code);
-    if(input.val() == data.code){
+    getNewCode(data, input, wrapperContainer, updatePageFunction);
+  }, 10000);
+}
+
+const checkCode = (input, data, wrapperContainer, updatePageFunction, password)=>{
+  console.log(state.password + ' password');
+  console.log(data.code + ' code');
+  console.log(password);
+  state.password = data.code;
+  input.keyup(()=>{
+    if(input.val() == password){
       state.screen = 'createUserAccountScreen';
       reRender(wrapperContainer, updatePageFunction, createUserAccount(updatePageFunction, wrapperContainer));
     }else{
@@ -38,25 +44,13 @@ const checkCode = (input, data, wrapperContainer, updatePageFunction)=>{
   });
 }
 
-// const countDownInterval = (init, functionResend, data, wrapperContainer, updatePageFunction)=>{
-//   setInterval(()=>{
-//     $('#count-down').html(init -= 1);
-//     functionResend;
-//     if(init == 1){
-//       console.log('init = 1');
-//       countDownInterval(22, functionResend, data, wrapperContainer, updatePageFunction);
-//     }
-//   }, 1000)
-// }
-//
-// const resendCode = (wrapperContainer, updatePageFunction, inputCode, messageContainer)=>{
-//   console.log('entra a resend');
-//   console.log(state.apiData.data.phone);
-//   $.post('/api/resendCode', {
-//     "phone" : state.apiData.data.phone
-//   }, (dataCode)=>{
-//     console.log(dataCode);
-//     state.apiData = dataCode;
-//     checkCode(inputCode, dataCode, wrapperContainer, updatePageFunction);
-//   })
-// }
+const getNewCode = (dataResend, input, wrapperContainer, updatePageFunction)=>{
+  $.post('api/resendCode', {
+    "phone" : dataResend.phone
+  }, (dataCode)=>{
+    console.log(dataCode);
+    state.password = dataCode.data;
+    console.log(state.password);
+    checkCode(input, dataResend, wrapperContainer, updatePageFunction, dataCode.data)
+  })
+}

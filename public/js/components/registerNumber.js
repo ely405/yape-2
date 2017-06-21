@@ -40,9 +40,9 @@ const createRegisterNumber = (updatePageFunction, wrapperContainer)=>{
         "phone": inpPhone.val(),
         "terms": checkTerms.is(':checked')
       }, (data, status)=>{
-        console.log(data);
-        console.log(data.data);
+        console.log(data.data.code);
         state.apiData = data;
+        state.password = data.data.code;
         if(data.success != 'false' && data.data != null){
           reRender(wrapperContainer, updatePageFunction, createResendCodeScreen(updatePageFunction, wrapperContainer));
         }else{

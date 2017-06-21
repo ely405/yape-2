@@ -17,7 +17,8 @@ const reRender = (resultContainer, update, screenToAppend)=>{
 
 const state={
   screen : null,
-  dataApi : null
+  dataApi : null,
+  password: null
 }
 
 const documentLoad = ()=>{
