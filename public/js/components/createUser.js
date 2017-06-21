@@ -1,6 +1,7 @@
 'use strict';
 
-const createUserAccount = (updatePageFunctioon, wrapperContainer)=>{
+const createUserAccount = (updatePageFunction, wrapperContainer)=>{
+  console.log(state.screen);
   let createUserContainer = $('<div/>',{'class':'row valign-wrapper flex-column container', 'id':'create-user-container'});
   let imgLockOne = $('<img/>',{'src':'img/icons/lockone.png', 'alt':'Lock One', 'class':'col s6 m-auto'});
   let userTitle = $('<h5/>',{'class':'center'}).html('Crea tu usuario Yape');
@@ -18,7 +19,9 @@ const createUserAccount = (updatePageFunctioon, wrapperContainer)=>{
   enableButton(formContainer, '.to-enable', 'keyup', btnAccount, userName, userEmail, userPass);
 
   btnAccount.click(()=>{
+    state.screen = 'congratulationsScreen';
     validateCreateUser(userName, userEmail, userPass);
+    reRender(wrapperContainer, updatePageFunction, createCongratulations(updatePageFunction));
   });
   return createUserContainer;
 }
