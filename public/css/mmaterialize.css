@@ -6670,4 +6670,11 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 #user-pass {
   background-image: url("../img/icons/lock.png"); }
 
+#inp-card {
+  background-image: url("../img/icons/card.png"); }
+
+#scan {
+  background-image: url("../img/icons/scan.png");
+  padding: 0.3rem 1rem; }
+
 /*# sourceMappingURL=mmaterialize.css.map */

@@ -9,14 +9,30 @@
 </head>
 <body>
   <main id="root"></main>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/vendor/materialize.min.js"></script>
-  <script src="js/components/welcome.js"></script>
-  <script src="js/components/resendCode.js"></script>
-  <script src="js/components/registerNumber.js"></script>
-  <script src="js/utils/validateCreateUser.js"></script>
-  <script src="js/components/createUser.js"></script>
-  <script src="js/components/congratulations.js"></script>
-  <script src="js/index.js"></script>
-</body>
-</html>
+  <section>
+    <div class="row valign-wrapper flex-column container" id="create-user-container">
+      <img src="img/icons/bcp-logo.png" alt="Phone" class=" col s6 m-auto">
+      <h5 class="center">Registra tu tarjeta de débito BCP</h5>
+      <h6 class="center">Por ahora solo aceptamos cuentas de ahorro y/o corriente en soles.</h6>
+      <form class="col m-auto s11 valign-wrapper flex-column">
+        <input id="inp-card" type="number" class="validate p-l-126 col s12 bg-icon bg-no-repeat">
+        <a href="#" class="center"><i id="scan" class="bg-contain bg-no-repeat"></i>Escanear esta tarjeta</a>
+        <div class="row">
+          <label class="col s6">Fecha de vencimiento</label>
+          <input type="date" class="datepicker col s6">
+        </div>
+        <button type="button" class="waves-effect btn disabled" id="btn-continue" disabled="disabled">Continuar</a>
+        </form>
+      </div>
+    </section>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/vendor/materialize.min.js"></script>
+    <script src="js/components/welcome.js"></script>
+    <script src="js/components/resendCode.js"></script>
+    <script src="js/components/registerNumber.js"></script>
+    <script src="js/utils/validateCreateUser.js"></script>
+    <script src="js/components/createUser.js"></script>
+    <script src="js/components/congratulations.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+  </html>
