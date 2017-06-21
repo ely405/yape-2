@@ -16,6 +16,7 @@ const createResendCodeScreen = (updatePageFunction, wrapperContainer, userPhoneN
 
   inpCode.keyup(()=>{
     if(inpCode.val().length == 6){
+      $.post('/api/resendCode')
       console.log('6 dígitos');
       state.screen = 'createUserAccountScreen';
       reRender(wrapperContainer, updatePageFunction, createUserAccount(updatePageFunction, wrapperContainer));
