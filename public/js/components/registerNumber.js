@@ -23,7 +23,8 @@ const createRegisterNumber = (updatePageFunction, wrapperContainer)=>{
 
   let btnContainer = $('<div/>',{'class':'input-field'});
   let btnContinue = $('<button/>',{'type':'button', 'class':'waves-effect btn disabled', 'id':'btn-continue', 'disabled':'disabled'}).html('Continuar');
-  registerWrapper.append(registerContainer, btnContainer.append(btnContinue));
+  let message = $('<p/>');
+  registerWrapper.append(registerContainer, btnContainer.append(btnContinue, message));
 
   registerContainer.on('change', '.to-enable', ()=>{
     if(inpPhone.val().length == 9 && checkTerms.is(':checked')){
@@ -40,8 +41,12 @@ const createRegisterNumber = (updatePageFunction, wrapperContainer)=>{
         "terms": checkTerms.is(':checked')
       }, (data, status)=>{
         console.log(data);
-        if(data.success != 'false'){
-          reRender(wrapperContainer, updatePageFunction, createResendCodeScreen(updatePageFunction, wrapperContainer, inpPhone.val()));
+        console.log(data.data);
+        state.apiData = data;
+        if(data.success != 'false' && data.data != null){
+          reRender(wrapperContainer, updatePageFunction, createResendCodeScreen(updatePageFunction, wrapperContainer));
+        }else{
+          message.html(data.message);
         }
       });
     });
