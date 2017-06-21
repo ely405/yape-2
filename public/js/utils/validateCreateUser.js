@@ -4,6 +4,7 @@ const validateCreateUser = (name, email, code)=>{
   console.log(name.val());
   console.log(email.val());
   console.log(code.val());
+  let emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
 }
 
 const enableButton = (parent, childrenClass, evento, buttonToEnable, name, email, code)=>{

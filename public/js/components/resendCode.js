@@ -1,5 +1,7 @@
 'use strict';
 
+let interval;
+
 const createResendCodeScreen = (updatePageFunction, wrapperContainer)=>{
   let dataResend = state.apiData.data;
   console.log(dataResend);
@@ -22,11 +24,11 @@ const createResendCodeScreen = (updatePageFunction, wrapperContainer)=>{
 
 const counter = (input, data, wrapperContainer, updatePageFunction)=>{
   checkCode(input, data, wrapperContainer, updatePageFunction, data.code);
-  let interval = setInterval(()=>{
+  interval = setInterval(()=>{
     data.code = null;
     console.log(data.code);
     getNewCode(data, input, wrapperContainer, updatePageFunction);
-  }, 10000);
+  }, 21000);
 }
 
 const checkCode = (input, data, wrapperContainer, updatePageFunction, password)=>{
