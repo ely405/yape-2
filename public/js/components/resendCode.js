@@ -11,16 +11,23 @@ const createResendCodeScreen = (updatePageFunction, wrapperContainer, userPhoneN
   let retryPara = $('<p/>',{'class':'center'}).html('Reintentar en ');
   let clockIcon = $('<i/>',{'id':'clock-icon','class':'bg-contain bg-no-repeat'});
   let countDown = $('<span/>',{'id':'count-down'}).html('time');
+  let message = $('<span/>')
   retryPara.append(clockIcon, countDown);
-  resendWrapper.append(resendTitle, resendPar, inpCode, retryPara);
+  resendWrapper.append(resendTitle, resendPar, inpCode, retryPara, message);
 
-  inpCode.keyup(()=>{
-    if(inpCode.val().length == 6){
-      $.post('/api/resendCode')
-      console.log('6 dígitos');
-      state.screen = 'createUserAccountScreen';
-      reRender(wrapperContainer, updatePageFunction, createUserAccount(updatePageFunction, wrapperContainer));
-    }
+  $.post('/api/resendCode', {
+    "phone" : $('#phone-number').val()
+  }, (data)=>{
+    inpCode.keyup(()=>{
+      if(inpCode.val().length == 6){
+        if(inpCode.val() == data.data){
+          state.screen = 'createUserAccountScreen';
+          reRender(wrapperContainer, updatePageFunction, createUserAccount(updatePageFunction, wrapperContainer));
+        }
+        message.html('Contraseña no válida');
+      }
+    })
   })
-  return resendWrapper;
+
+return resendWrapper;
 }
