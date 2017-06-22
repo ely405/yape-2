@@ -21,7 +21,7 @@ const createUserAccount = (updatePageFunction, wrapperContainer)=>{
   btnAccount.click(()=>{
     state.screen = 'congratulationsScreen';
     validateCreateUser(userName, userEmail, userPass);
-    reRender(wrapperContainer, updatePageFunction, createCongratulations(updatePageFunction));
+    reRender(wrapperContainer, updatePageFunction, createCongratulations(updatePageFunction, wrapperContainer));
   });
   return createUserContainer;
 }
