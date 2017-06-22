@@ -9,9 +9,8 @@ const createCongratulations = (updatePageFunction, wrapperContainer)=>{
   congratulations.append(imgCongr, titleGood, parGood);
 
   setTimeout(()=>{
-    console.log('set time ot');
     state.screen = 'registerCardScreen';
-    reRender(wrapperContainer, updatePageFunction, createRegisterCard(updatePageFunction));
+    reRender(wrapperContainer, updatePageFunction, createRegisterCard(updatePageFunction, wrapperContainer));
   }, 3000);
   return congratulations;
 }

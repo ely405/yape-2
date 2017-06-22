@@ -14,5 +14,11 @@ const enableButton = (parent, childrenClass, evento, buttonToEnable, name, email
       buttonToEnable.removeClass('disabled');
       buttonToEnable.removeAttr('disabled');
     }
+    // for(var i= 0, i<=array.length; i++){
+    //   if(array[i].val() != ''){
+    //     buttonToEnable.removeClass('disabled');
+    //     buttonToEnable.removeAttr('disabled');
+    //   }
+    // }
   })
 }

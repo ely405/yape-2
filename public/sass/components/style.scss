@@ -4,6 +4,9 @@
 .space-around{
   justify-content: space-around;
 }
+.space-between{
+  justify-content: space-between;
+}
 .flex-center{
   justify-content: center;
 }
@@ -12,6 +15,12 @@
 }
 .m-auto{
   margin: auto;
+}
+.m-b-0{
+  margin-bottom: 0;
+}
+.p-1{
+  padding: 1rem;
 }
 .m-inherit{
   margin: inherit;
@@ -61,7 +70,7 @@
 #user-email{
   background-image: url('../img/icons/message-gray.png');
 }
-#user-pass{
+#user-pass, #inp-pass-card{
   background-image: url('../img/icons/lock.png');
 }
 
@@ -72,5 +81,12 @@
 #scan{
   background-image: url('../img/icons/scan.png');
   padding: 0.3rem 1rem;
-
+}
+//hello
+#eye{
+  background-image: url('../img/icons/eye.png');
+  padding: 0.3rem 1rem;
+}
+#right-arrow{
+  background-image: url('../img/icons/right-arrow-circular-button.png');
 }

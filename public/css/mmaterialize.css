@@ -6616,6 +6616,9 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 .space-around {
   justify-content: space-around; }
 
+.space-between {
+  justify-content: space-between; }
+
 .flex-center {
   justify-content: center; }
 
@@ -6624,6 +6627,12 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 
 .m-auto {
   margin: auto; }
+
+.m-b-0 {
+  margin-bottom: 0; }
+
+.p-1 {
+  padding: 1rem; }
 
 .m-inherit {
   margin: inherit; }
@@ -6667,7 +6676,7 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 #user-email {
   background-image: url("../img/icons/message-gray.png"); }
 
-#user-pass {
+#user-pass, #inp-pass-card {
   background-image: url("../img/icons/lock.png"); }
 
 #inp-card {
@@ -6676,5 +6685,12 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 #scan {
   background-image: url("../img/icons/scan.png");
   padding: 0.3rem 1rem; }
+
+#eye {
+  background-image: url("../img/icons/eye.png");
+  padding: 0.3rem 1rem; }
+
+#right-arrow {
+  background-image: url("../img/icons/right-arrow-circular-button.png"); }
 
 /*# sourceMappingURL=mmaterialize.css.map */
